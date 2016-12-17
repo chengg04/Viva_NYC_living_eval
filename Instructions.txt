@@ -1,0 +1,10 @@
+Instructions
+
+1. Change the directory for dataforPCT.csv and piechart.csv in views.py (3 in total) to your own directory.
+
+2. Change the key if necessary. I applied for a new key today since my last key is out of quota. New key is: AIzaSyDCjmYC7qeeWuMD0I2_4HxcXrzs8U84d3c. I have changed to the new key in all geolocation4 files.
+
+3. test the program with different address. I have a breakdown when use my home address, 971 Columbus, NY. The breakdown was due to the precinct converter, and till now I have no solution. So avoid that in presentation.
+
+4. Test wisely so we dnt run out of quotas in presentation.
+

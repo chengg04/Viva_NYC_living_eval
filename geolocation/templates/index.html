@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Neighborhood Cafes</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+
+	    height: 20%
+
+      }
+    </style>
+  </head>
+  <body>
+<h2>The Neighborhood</h2>
+  <div id="map" style="width:500px;height:380px;"></div>
+    <script>
+function initMap() {
+    //navigator.geolocation.getCurrentPosition returns the
+    //latitude and longitude of wherever the browser is located
+  navigator.geolocation.getCurrentPosition(function(position) {
+
+
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
+
+          //Or you can pass the lat and lon from the views function
+
+          lat = {{ lat }};
+          lon = {{ lon }};
+
+      //showMap is the function that displays the map
+      showMap(lat, lon);
+
+  });
+    //listener loads the map when the page is loaded
+  map.addListener('click', function(e) {
+    placeMarkerAndPanTo(e.latLng, map);
+  });
+}
+
+function showMap(lat,lon,results_list) {
+    //create a lat and lon object
+    var myLatLng = new google.maps.LatLng(lat, lon);
+	var location=[];
+	
+    //options for the map
+    var mapOptions = {
+        zoom: 14,
+        center: myLatLng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    //this figures out where the map is loaded on the html page
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    //create the google pin for the map
+    //you can create many of these but each needs its own position object
+    /*for (result in results_list){
+		location.push([{{result.r_lat}},{{result.r_lon}}]);
+	};
+	for (var i=0;i<location.length;i++){
+		var loc=location[i];
+		var marker=new google.maps.Marker({
+			position:{lat:loc[0],lng:loc[1]},
+			map:mapsddsxd
+		});
+	}*/
+	/*for (result in results_list){
+		var marker=new google.maps.Marker({
+			position:{lat:result.r_lat,lng:result.r_lon},
+			map:map
+		});
+	}*/
+	/*lat1={{results_list.r_lat}}
+	lon1={{results_list.r_lon}}
+	var marker=new google.maps.Marker({
+		position:{lat:lat1,lng:lon1},
+		map:map
+	});*/
+}
+
+function placeMarkerAndPanTo(latLng, map) {
+  var marker = new google.maps.Marker({
+    position: latLng,
+    map: map
+  });
+  map.panTo(latLng);
+}
+
+    </script>
+    <!-- the following script gets the map from google. note the key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyU7DP39sDYFxP3gRmC0z1N2VMUx60ErM&signed_in=true&callback=initMap" async defer></script>
+ <p>
+     Nearby {{ type }}:
+ </p>
+<form method="get" action="search">
+    <select name="type" size="1">
+        <option name="cafe" value="cafe">Cafes</option>
+        <option name="subway_station" value="subway_station">Subway Station</option>
+        <option name="restaurant" value="restaurant">Restaurants</option>
+        <option name="museum" value="museum">Museum</option>
+        <option name="grocery_or_supermarket" value="grocery_or_supermarket">Groceries</option>
+        <option name="place_of_worship" value="place_of_worship">Place of worship</option>
+    </select>
+    Enter a search address: <input type="text" name="address">
+    <input type="submit" name="submit" value="search">
+</form>
+<!--a loop inside the list-->
+  <ul>{% for result in results_list %}
+  <li>{{ result.r_name }}, {{ result.r_address }}</li>
+  {% endfor %}
+  </ul>
+ <p>
+	Cost. Please select district and category:
+</p>
+<form method="get" action="search">
+    <select name="county_type" size="1">
+        <option name="new york" value="new york">New York</option>
+        <option name="brooklyn" value="brooklyn">Brooklyn</option>
+        <option name="bronx" value="bronx">Bronx</option>
+        <option name="queens" value="queens">Queens</option>
+    </select>
+    <select name="current_section" size="1">
+        <option name="Restaurants" value="Restaurants">Restaurants</option>
+        <option name="Markets" value="Markets">Markets</option>
+        <option name="Transportation" value="Transportation">Transportation</option>
+        <option name="Utilities (Monthly)" value="Utilities (Monthly)">Utilities (Monthly)</option>
+		<option name="Clothing And Shoes" value="Clothing And Shoes">Clothing And Shoes</option>
+        <option name="Rent Per Month" value="Rent Per Month">Rent Per Month</option>
+        <option name="Buy Apartment Price" value="Buy Apartment Price">Buy Apartment Price</option>
+        <option name="Comparison" value="Comparison">Comparison</option>
+    </select>
+    <input type="submit" name="submit" value="search">
+</form>
+<!--a loop inside the list-->
+ 
+  <ul>{% for result in result_list3 %}
+  <li>{{ result.result_text }}</li>
+  {% endfor %}
+  </ul>
+ 
+
+  </body>
+</html>
+
+

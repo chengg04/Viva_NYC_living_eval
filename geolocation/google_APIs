@@ -1,0 +1,8 @@
+1. Sign up for an API key
+https://console.developers.google.com/flows/enableapi?apiid=places_backend&keyType=SERVER_SIDE&reusekey=true
+
+2. For the question "Accept requests from these server addresses" don't enter anything
+
+3. Enable Google maps javascript API, Google places API, and Google Geolocations API
+
+4.
