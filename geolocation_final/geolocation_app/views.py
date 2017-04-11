@@ -68,7 +68,7 @@ def index(request,trans_type='DRIVING',type='cafe',area='New York',category='Res
     #here
 
     #THIS KEY HAS LIMITED USE. GET YOUR OWN KEY!!!
-    AUTH_KEY = "AIzaSyBh-T-0Aq4mcQX0bbxESvVrthaSgHTJa2c"
+    AUTH_KEY = "AIzaSyCPE34R7tmpZ_F08FWeDNBy27I9iQfhnqk"
     #Default lat and lon
     lat =40.758889
     lon = -73.985278
@@ -323,7 +323,7 @@ def index(request,trans_type='DRIVING',type='cafe',area='New York',category='Res
 
 
     import numpy as np
-    data = np.genfromtxt('D:\programming_files\github\pythonproject\dataforPCT.csv',delimiter=',')
+    data = np.genfromtxt('D:\programming_files\github\Viva_NYC_living_eval\dataforPCT.csv',delimiter=',')
     average=np.average(data[1:,16])
     std=np.std(data[1:,16])
     if data[p,16]<average-std:
@@ -372,7 +372,7 @@ def simple(request):
 
 
         ax2=fig.add_subplot(1,2,2)
-        datapie = np.genfromtxt('D:\programming_files\github\pythonproject\piechart.csv',delimiter=',')
+        datapie = np.genfromtxt('D:\programming_files\github\Viva_NYC_living_eval\piechart.csv',delimiter=',')
         labels = 'MURDER & NON NEGL. MANSLAUGHTER', 'RAPE', 'ROBBERY', 'FELONY ASSAULT','BURGLARY','GRAND LARCENY','GRAND LARCENY OF MOTOR VEHICLE '
         start=7*p-6
         end=7*p+1
